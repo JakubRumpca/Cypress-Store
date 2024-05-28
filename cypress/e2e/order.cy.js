@@ -1,6 +1,6 @@
 describe('Order', () => {
-    const standardUser = Cypress.env('standard_user');
-    const password = Cypress.env('password');
+    const standardUser = Cypress.env('STANDARD_USER');
+    const password = Cypress.env('PASSWORD');
     const orderData = {
         firstName: "John",
         lastName: "Wick",

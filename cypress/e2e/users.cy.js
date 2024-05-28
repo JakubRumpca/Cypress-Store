@@ -1,7 +1,7 @@
 describe('Users', () => {
-  const standardUser = Cypress.env('standard_user');
-  const lockedUser = Cypress.env('locked_user');
-  const password = Cypress.env('password');
+  const standardUser = Cypress.env('STANDARD_USER');
+  const lockedUser = Cypress.env('LOCKED_USER');
+  const password = Cypress.env('PASSWORD');
 
   it('Should check if the standard user can log in', () => {
     cy.visit('/');

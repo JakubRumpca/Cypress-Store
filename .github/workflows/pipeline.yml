@@ -1,0 +1,16 @@
+name: Pipeline - Cypress Tests
+on: push
+jobs:
+  cypress-run:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+        env:
+          STANDARD_USER: ${{ secrets.STANDARD_USER }}
+          LOCKED_USER: ${{ secrets.LOCKED_USER }}
+          PASSWORD: ${{ secrets.PASSWORD }}

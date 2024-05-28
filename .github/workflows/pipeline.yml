@@ -11,6 +11,6 @@ jobs:
         with:
           browser: chrome
         env:
-          STANDARD_USER: ${{ secrets.STANDARD_USER }}
-          LOCKED_USER: ${{ secrets.LOCKED_USER }}
-          PASSWORD: ${{ secrets.PASSWORD }}
+          CYPRESS_STANDARD_USER: ${{ secrets.CYPRESS_STANDARD_USER }}
+          CYPRESS_LOCKED_USER: ${{ secrets.CYPRESS_LOCKED_USER }}
+          CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}

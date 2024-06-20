@@ -127,3 +127,31 @@
 - The removal process completes without errors.
 
 ---
+
+## 5) Test Case: Failed login with wrong password
+
+### Test Case ID:
+- TC-05
+
+### Test Case Name:
+- Should check if the standard user can not log in using the wrong password.
+
+### Test Objective:
+- Verify that the standard user can not log in.
+
+### Pre-conditions:
+- The user has a valid account on the online store.
+- The user knows their login credentials and purposely sets the wrong password.
+
+### Steps:
+- Open the web browser.
+- Go to the online store's login page URL (https://www.saucedemo.com/).
+- Fill username input (standard_user).
+- Fill password input (wrongPassword).
+- Verify the presence of a error message (Epic sadface: Username and password do not match any user in this service).
+
+### Expected Results:
+- The user can not logs in. 
+- The error message is displayed.
+
+---

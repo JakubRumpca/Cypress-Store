@@ -1,219 +1,43 @@
 # Cypress-Store
+[![Tests status](https://github.com/JakubRumpca/Cypress-Store/actions/workflows/pipeline.yml/badge.svg)](https://github.com/JakubRumpca/Cypress-Store/actions/workflows/pipeline.yml)
 
-## Test Cases:
+The repository contains cypress automated tests of the online store available at https://www.saucedemo.com/. The website was created for training purposes, where you can practice testing web applications on it, so using bots such as automatic tests is allowed and does not violate the regulations.
 
-### 1) Test Case: Successful login as a standard user
+## Technologies
 
-#### Test Case ID:
-- TC-01
+- **JavaScript**
+- **Node** - Version used -> 20. (It is required for dependency installation)
+- **NPM** - Version used -> 10.
 
-#### Test Case Name:
-- Should check if the standard user can log in
+## Repository content
 
-#### Test Objective:
-- Verify that the standard user can successfully log in.
+- **/cypress/e2e** - Main location for all E2E tests.
+- **/cypress/page_objects** - Contains page definitions (Page Objects) that facilitate test maintenance and enable code reuse.
+- **cypress.config.ts** - Cypress configuration file that contains settings for the test environment.
+- **cypress.env.json.template** - User data should be hidden, but the application was created for training purposes. Secrets are available on the login page so I do not hide them in this repository, but cypress.env.json file was added to .gitignore file as should. After removing ".template" from the file name, you can run the tests.
+- **/.github/workflows/pipeline.yml** - File that contains Continuous Integration/Continuous Deployment (CI/CD) configuration.
+- **TEST_CASES.md** - File that contains test cases of the implemented tests.
 
-#### Pre-conditions:
-- The user has a valid account on the online store.
-- The user knows their login credentials (username and password).
+## How to run tests
 
-#### Steps:
-- Open the web browser.
-- Go to the online store's login page URL (https://www.saucedemo.com/).
-- Login to the user (standard_user).
-- Verify successful login by checking the page title. (Products)
+To run the tests, follow these steps:
 
-#### Expected Results:
-- The user successfully logs in and is redirected to the homepage.
+1. Install dependencies:
 
----
+```bash
+npm install
+```
 
-### 2) Test Case: Failed login as blocked user
+2. remove **.template** from the file name **cypress.env.json.template**. It defines the secrets needed to log in.
 
-#### Test Case ID:
-- TC-02
+```bash
+cp cypress.env.json.template cypress.env.json
+```
 
-#### Test Case Name:
-- Should check if the locked user can not log in.
+3. To runs e2e tests:
 
-#### Test Objective:
-- Verify that the locked user can not log in.
+```bash
+npm run cy:open
+```
 
-#### Pre-conditions:
-- The user has a valid account on the online store.
-- The user knows their login credentials (username and password).
-
-#### Steps:
-- Open the web browser.
-- Go to the online store's login page URL (https://www.saucedemo.com/).
-- Login to the user (locked_user).
-- Verify the presence of a error message (Epic sadface: Sorry, this user has been locked out.).
-
-#### Expected Results:
-- The user can not logs in. 
-- The error message is displayed.
-
----
-
-### 3) Test Case: Successful order placement
-
-#### Test Case ID:
-- TC-03
-
-#### Test Case Name:
-- Should order backpack and bike light
-
-#### Test Objective:
-- Verify that a user can successfully place an order.
-
-#### Pre-conditions:
-- The user has a valid account on the online store.
-- The user knows their login credentials (username and password).
-- The products to be added are available in stock.
-
-#### Steps:
-- Open the web browser.
-- Go to the online store's login page URL (https://www.saucedemo.com/).
-- Login to the user (standard_user).
-- Search for the first product (backpack) and add it to the cart. 
-- Search for the second product (bike light) and add it to the cart. 
-- Go to the shopping cart page.
-- Verify that both products are added in the cart.
-- Click on the "Checkout" button.
-- Fill in the required shipping details (first name, last name, postal code).
-- Click on the "Continue" button.
-- Click on the "Finish" button.
-- Verify order confirmation (Thank you for your order!).
-
-#### Expected Results:
-- The user successfully logs in and is redirected to the homepage.
-- Both products are correctly added to the cart and displayed with accurate details.
-- The checkout process completes without errors.
-- The order confirmation message is displayed.
-
----
-
-### 4) Test Case: Remove product from the cart
-
-#### Test Case ID:
-- TC-04
-
-#### Test Case Name:
-- Should add three products to the cart and then remove one of them.
-
-#### Test Objective:
-- Verify that a user can remove product from cart.
-
-#### Pre-conditions:
-- The user has a valid account on the online store.
-- The user knows their login credentials (username and password).
-- The products to be added are available in stock.
-
-#### Steps:
-- Open the web browser.
-- Go to the online store's login page URL (https://www.saucedemo.com/).
-- Login to the user (standard_user).
-- Search for the first product (backpack) and add it to the cart. 
-- Search for the second product (bike light) and add it to the cart. 
-- Search for the third product (onesie) and add it to the cart. 
-- Go to the shopping cart page.
-- Verify that three products are added in the cart.
-- Remove oneside from the cart.
-- Verify that two products are added in the cart.
-
-#### Expected Results:
-- The user successfully logs in and is redirected to the homepage.
-- Three products are correctly added to the cart and displayed with accurate details.
-- The removal process completes without errors.
-
----
-
-## 5) Test Case: Failed login with wrong password
-
-### Test Case ID:
-- TC-05
-
-### Test Case Name:
-- Should check if the standard user can not log in using the wrong password.
-
-### Test Objective:
-- Verify that the standard user can not log in.
-
-### Pre-conditions:
-- The user has a valid account on the online store.
-- The user knows their login credentials and purposely sets the wrong password.
-
-### Steps:
-- Open the web browser.
-- Go to the online store's login page URL (https://www.saucedemo.com/).
-- Fill username input (standard_user).
-- Fill password input (wrongPassword).
-- Verify the presence of a error message (Epic sadface: Username and password do not match any user in this service).
-
-### Expected Results:
-- The user can not logs in. 
-- The error message is displayed.
-
----
-
-## 6) Test Case: Sort by name
-
-### Test Case ID:
-- TC-06
-
-### Test Case Name:
-- Should sort the products by name in descending and ascending order.
-
-### Test Objective:
-- Verify that a user can sort products by name.
-
-### Pre-conditions:
-- The user has a valid account on the online store.
-- The user knows their login credentials (username and password).
-
-### Steps:
-- Open the web browser.
-- Go to the online store's login page URL (https://www.saucedemo.com/).
-- Login to the user (standard_user).
-- sort products by name in descending order.
-- verify that the first product on the list is "T-Shirt (Red)".
-- sort products by name in ascending order.
-- verify that the first product on the list is "Sauce Labs Backpack".
-
-### Expected Results:
-- The user successfully logs in and is redirected to the homepage.
-- Products are sorted correctly in descending order by name.
-- Products are sorted correctly in ascending order by name.
-
----
-
-## 7) Test Case: Sort by price
-
-### Test Case ID:
-- TC-07
-
-### Test Case Name:
-- Should sort the products by price in descending and ascending order.
-
-### Test Objective:
-- Verify that a user can sort products by price.
-
-### Pre-conditions:
-- The user has a valid account on the online store.
-- The user knows their login credentials (username and password).
-
-### Steps:
-- Open the web browser.
-- Go to the online store's login page URL (https://www.saucedemo.com/).
-- Login to the user (standard_user).
-- sort products by price in descending order.
-- verify that the first product on the list is "Sauce Labs Fleece Jacket".
-- sort products by price in ascending order.
-- verify that the first product on the list is "Sauce Labs Onesie".
-
-### Expected Results:
-- The user successfully logs in and is redirected to the homepage.
-- Products are sorted correctly in descending order by price.
-- Products are sorted correctly in ascending order by price.
-
----
+The command starts the test management tool in which you should select the type of tests (e2e testing) and then the browser. After that click 'Start E2E Testing in (browser name)' button, the tool will open in your selected browser. To run a test, select it from the list.

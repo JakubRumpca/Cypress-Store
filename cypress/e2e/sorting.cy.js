@@ -6,6 +6,7 @@ describe('Sorting', () => {
   const homePage = new HomePage();
   const standardUser = Cypress.env('STANDARD_USER');
   const password = Cypress.env('PASSWORD');
+  const productsList = '[data-test= "inventory-item-name"]';
 
   beforeEach(() => {
     cy.visit('/');
@@ -14,15 +15,15 @@ describe('Sorting', () => {
 
   it('Should sort the products by name in descending and ascending order', () => {
     homePage.sortByName("desc");
-    cy.get('[data-test= "inventory-item-name"]').first().contains('T-Shirt (Red)')
+    cy.get(productsList).first().contains('T-Shirt (Red)');
     homePage.sortByName("asc");
-    cy.get('[data-test= "inventory-item-name"]').first().contains('Sauce Labs Backpack')
+    cy.get(productsList).first().contains('Sauce Labs Backpack');
   });
   
   it('Should sort the products by price in descending and ascending order', () => {
     homePage.sortByPrice("desc");
-    cy.get('[data-test= "inventory-item-name"]').first().contains('Sauce Labs Fleece Jacket')
+    cy.get(productsList).first().contains('Sauce Labs Fleece Jacket');
     homePage.sortByPrice("asc");
-    cy.get('[data-test= "inventory-item-name"]').first().contains('Sauce Labs Onesie')
+    cy.get(productsList).first().contains('Sauce Labs Onesie');
   });
 });

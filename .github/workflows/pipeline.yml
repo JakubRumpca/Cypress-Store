@@ -1,5 +1,8 @@
 name: Pipeline - Cypress Tests
-on: push
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
